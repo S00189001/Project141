@@ -6,6 +6,7 @@
 #include "Engine/Engine.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
+#include "OnlineSubsystem.h"
 
 #include "PlatformTrigger.h"
 // Not Moduler <Here>
@@ -30,13 +31,23 @@ UMasterGameInstance::UMasterGameInstance(const FObjectInitializer& ObjectInitial
 
 void UMasterGameInstance::Init()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Found Class %s"), *MenuClass->GetName());
+	// Get Interface
+	IOnlineSubsystem* Subsystem = IOnlineSubsystem::Get();
+	if (Subsystem != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Found Subsystem %s"), *Subsystem->GetSubsystemName().ToString());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Found No Subsystem"));
+	}
 
-	// Logs to the Console
-	//UE_LOG(LogTemp, Warning, TEXT("Game Instance Init"));
+	//UE_LOG(LogTemp, Warning, TEXT("Found Class %s"), *MenuClass->GetName());
+
+
 }
 
-void UMasterGameInstance::LoadMenu()
+void UMasterGameInstance::LoadMenuWidget()
 {
 	if (!ensure(MenuClass != nullptr)) return;
 	Menu = CreateWidget<UMainMenu>(this, MenuClass);
