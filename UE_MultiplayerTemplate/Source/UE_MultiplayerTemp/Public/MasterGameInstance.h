@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "OnlineSubsystem.h"
+
 // Not Modular <Here>
 #include "UE_MultiplayerTemp/MenuSystem/MenuInterface.h"
 
@@ -40,5 +42,14 @@ private:
     TSubclassOf<class UUserWidget> InGameEscMenuClass;
 
     class UMainMenu* Menu;
+
+    IOnlineSessionPtr SessionInterface;
+    TSharedPtr<class FOnlineSessionSearch> SessionSearch;
+
+    void OnCreateSessionComplete(FName SessionName, bool Success);
+    void OnDestroySessionComplete(FName SessionName, bool Success);
+    void OnFindSessionsComplete(bool Success);
+
+    void CreateSession();
 
 };

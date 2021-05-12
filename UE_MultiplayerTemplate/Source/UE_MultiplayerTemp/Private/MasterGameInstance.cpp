@@ -6,12 +6,15 @@
 #include "Engine/Engine.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
-#include "OnlineSubsystem.h"
+#include "OnlineSessionSettings.h"
+#include "Interfaces/OnlineSessionInterface.h"
 
 #include "PlatformTrigger.h"
 // Not Moduler <Here>
 #include "UE_MultiplayerTemp/MenuSystem/MainMenu.h"
 #include "UE_MultiplayerTemp/MenuSystem/MenuWidget.h"
+
+const static FName SESSION_NAME = TEXT("My Session Game");
 
 UMasterGameInstance::UMasterGameInstance(const FObjectInitializer& ObjectInitializer)
 {
@@ -36,6 +39,24 @@ void UMasterGameInstance::Init()
 	if (Subsystem != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Found Subsystem %s"), *Subsystem->GetSubsystemName().ToString());
+		SessionInterface = Subsystem->GetSessionInterface();
+		if (SessionInterface.IsValid())
+		{
+			//UE_LOG(LogTemp, Warning, TEXT("Found Session Interface"));
+			// Delegate
+			SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UMasterGameInstance::OnCreateSessionComplete);
+			SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this, &UMasterGameInstance::OnDestroySessionComplete);
+			SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UMasterGameInstance::OnFindSessionsComplete);
+
+			SessionSearch = MakeShareable(new FOnlineSessionSearch());
+			if (SessionSearch.IsValid())
+			{
+				SessionSearch->bIsLanQuery = true;
+				//SessionSearch->QuerySettings.
+				UE_LOG(LogTemp, Warning, TEXT("Starting Find Session"));
+				SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
+			}
+		}
 	}
 	else
 	{
@@ -72,8 +93,54 @@ void UMasterGameInstance::InGameLoadMenu()
 	L_Menu->SetMenuInterface(this);
 }
 
+
 void UMasterGameInstance::Host()
 {
+	if (SessionInterface.IsValid())
+	{
+		// Check if Session Exists
+		auto ExitingSession = SessionInterface->GetNamedSession(SESSION_NAME);
+		if (ExitingSession != nullptr)
+		{
+			SessionInterface->DestroySession(SESSION_NAME);
+		}
+		else
+		{
+			CreateSession();
+		}
+
+	}
+}
+
+void UMasterGameInstance::OnDestroySessionComplete(FName SessionName, bool Success)
+{
+	if (Success)
+	{
+		CreateSession();
+	}
+}
+
+void UMasterGameInstance::CreateSession()
+{
+	if (SessionInterface.IsValid())
+	{
+		// Create Session + Setting Settings
+		FOnlineSessionSettings SessionSettings;
+		SessionSettings.bIsLANMatch = true;
+		SessionSettings.NumPublicConnections = 2;
+		SessionSettings.bShouldAdvertise = true;
+		SessionInterface->CreateSession(0, SESSION_NAME, SessionSettings);
+	}
+
+}
+
+void UMasterGameInstance::OnCreateSessionComplete(FName SessionName, bool Success)
+{
+	if (!Success)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Could Not Create Session"));
+		return;
+	}
 	if (Menu != nullptr)
 	{
 		Menu->MenuTeardown();
@@ -88,6 +155,20 @@ void UMasterGameInstance::Host()
 	if (!ensure(World != nullptr)) return;
 
 	World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
+}
+
+void UMasterGameInstance::OnFindSessionsComplete(bool Success)
+{
+
+	if (Success && SessionSearch.IsValid())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Finished Find Session"));
+		for (const FOnlineSessionSearchResult& SearchResult : SessionSearch->SearchResults)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Found Session Name: %s"), *SearchResult.GetSessionIdStr());
+		}
+
+	}
 }
 
 void UMasterGameInstance::Join(const FString& Address)
