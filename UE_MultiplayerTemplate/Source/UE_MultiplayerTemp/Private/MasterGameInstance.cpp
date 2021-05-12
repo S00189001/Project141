@@ -118,9 +118,12 @@ void UMasterGameInstance::CreateSession()
 	{
 		// Create Session + Setting Settings
 		FOnlineSessionSettings SessionSettings;
-		SessionSettings.bIsLANMatch = true;
+		SessionSettings.bIsLANMatch = false;
 		SessionSettings.NumPublicConnections = 2;
 		SessionSettings.bShouldAdvertise = true;
+		// For Steam
+		SessionSettings.bUsesPresence = true;
+
 		SessionInterface->CreateSession(0, SESSION_NAME, SessionSettings);
 	}
 
@@ -154,6 +157,11 @@ void UMasterGameInstance::RefreshingServerList()
 	SessionSearch = MakeShareable(new FOnlineSessionSearch());
 	if (SessionSearch.IsValid())
 	{
+		// because of sharing an app id
+		SessionSearch->MaxSearchResults = 100;
+		// Steam - Allows for search presence
+		SessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
+
 		SessionSearch->bIsLanQuery = true;
 		//SessionSearch->QuerySettings.
 		UE_LOG(LogTemp, Warning, TEXT("Starting Find Session"));
@@ -169,6 +177,12 @@ void UMasterGameInstance::OnFindSessionsComplete(bool Success)
 		UE_LOG(LogTemp, Warning, TEXT("Finished Find Session"));
 
 		TArray<FString> ServerNames;
+		// Test Data
+		ServerNames.Add("Test Server 1");
+		ServerNames.Add("Test Server 2");
+		ServerNames.Add("Test Server 3");
+		ServerNames.Add("Test Server 4");
+
 		for (const FOnlineSessionSearchResult& SearchResult : SessionSearch->SearchResults)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Found Session Name: %s"), *SearchResult.GetSessionIdStr());

@@ -76,5 +76,7 @@ private:
 	UFUNCTION()
 		void OpenMainMenu();
 
+	void UpdateChildren();
+
 	TOptional<uint32> SelectedIndex;
 };
