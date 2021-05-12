@@ -48,14 +48,7 @@ void UMasterGameInstance::Init()
 			SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this, &UMasterGameInstance::OnDestroySessionComplete);
 			SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UMasterGameInstance::OnFindSessionsComplete);
 
-			SessionSearch = MakeShareable(new FOnlineSessionSearch());
-			if (SessionSearch.IsValid())
-			{
-				SessionSearch->bIsLanQuery = true;
-				//SessionSearch->QuerySettings.
-				UE_LOG(LogTemp, Warning, TEXT("Starting Find Session"));
-				SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
-			}
+	
 		}
 	}
 	else
@@ -157,37 +150,56 @@ void UMasterGameInstance::OnCreateSessionComplete(FName SessionName, bool Succes
 	World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
 }
 
+void UMasterGameInstance::RefreshingServerList()
+{
+	SessionSearch = MakeShareable(new FOnlineSessionSearch());
+	if (SessionSearch.IsValid())
+	{
+		SessionSearch->bIsLanQuery = true;
+		//SessionSearch->QuerySettings.
+		UE_LOG(LogTemp, Warning, TEXT("Starting Find Session"));
+		SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
+	}
+}
+
 void UMasterGameInstance::OnFindSessionsComplete(bool Success)
 {
 
-	if (Success && SessionSearch.IsValid())
+	if (Success && SessionSearch.IsValid() && Menu != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Finished Find Session"));
+
+		TArray<FString> ServerNames;
 		for (const FOnlineSessionSearchResult& SearchResult : SessionSearch->SearchResults)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Found Session Name: %s"), *SearchResult.GetSessionIdStr());
+			ServerNames.Add(SearchResult.GetSessionIdStr());
 		}
 
+		Menu->SetServerList(ServerNames);
 	}
 }
 
 void UMasterGameInstance::Join(const FString& Address)
 {
+
+
 	if (Menu != nullptr)
 	{
-		Menu->MenuTeardown();
+		Menu->SetServerList({"Test1", "Test2"});
+		/*Menu->MenuTeardown();*/
 	}
 
-	UEngine* Engine = GetEngine();
-	if (!ensure(Engine != nullptr)) return;
+	//UEngine* Engine = GetEngine();
+	//if (!ensure(Engine != nullptr)) return;
 
-	Engine->AddOnScreenDebugMessage(0, 5, FColor::Green, FString::Printf(TEXT("Joining %s"), *Address));
+	//Engine->AddOnScreenDebugMessage(0, 5, FColor::Green, FString::Printf(TEXT("Joining %s"), *Address));
 
-	// Get Player Controller
-	APlayerController* PlayerController = GetFirstLocalPlayerController();
-	if (!ensure(PlayerController != nullptr)) return;
+	//// Get Player Controller
+	//APlayerController* PlayerController = GetFirstLocalPlayerController();
+	//if (!ensure(PlayerController != nullptr)) return;
 
-	PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute);
+	//PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute);
 
 }
 

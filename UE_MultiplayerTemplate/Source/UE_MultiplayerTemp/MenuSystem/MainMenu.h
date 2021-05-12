@@ -19,6 +19,8 @@ public:
 	// Constructor
 	UMainMenu(const FObjectInitializer& ObjectInitializer);
 
+	void SetServerList(TArray<FString> ServerNames);
+
 protected:
 	virtual bool Initialize();
 

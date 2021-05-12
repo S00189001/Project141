@@ -35,6 +35,9 @@ public:
 
     virtual void LoadMainMenu() override;
 
+    // Virtual?
+    void RefreshingServerList() override;
+
 private:
     // Added "Class" for forward declaration as no include added
     TSubclassOf<class UUserWidget> MenuClass;

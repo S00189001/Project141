@@ -8,10 +8,11 @@
 #include "Components/Button.h"
 #include "Components/WidgetSwitcher.h"
 #include "Components/EditableTextBox.h"
+#include "Components/TextBlock.h"
 
 #include "ServerRow.h"
 
-UMainMenu::UMainMenu(const FObjectInitializer & ObjectInitializer)
+UMainMenu::UMainMenu(const FObjectInitializer& ObjectInitializer)
 {
 	// To link BP classes - Server Row BP
 	ConstructorHelpers::FClassFinder<UUserWidget> ServerRowBPClass(TEXT("/Game/MenuSystem/WBP_ServerRow"));
@@ -28,7 +29,7 @@ bool UMainMenu::Initialize()
 	if (!ensure(HostButton != nullptr)) return false;
 	// Call for binding
 	HostButton->OnClicked.AddDynamic(this, &UMainMenu::HostServer);
-	
+
 	// Binding to a button in Main Menu (Join)
 	if (!ensure(JoinButton != nullptr)) return false;
 	// Call for binding
@@ -43,7 +44,7 @@ bool UMainMenu::Initialize()
 	if (!ensure(CancelJoinMenuButton != nullptr)) return false;
 	// Call for binding
 	CancelJoinMenuButton->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
-	
+
 	// Binding to a button in Main Menu (JoinServer)
 	if (!ensure(ConfirmJoinMenuButton != nullptr)) return false;
 	// Call for binding
@@ -63,22 +64,39 @@ void UMainMenu::HostServer()
 
 }
 
+void UMainMenu::SetServerList(TArray<FString> ServerNames)
+{
+	UWorld* World = this->GetWorld();
+	if (!ensure(World != nullptr)) return;
+
+	ServerList->ClearChildren();
+
+	for (const FString& ServerName : ServerNames)
+	{
+		UServerRow* Row = CreateWidget<UServerRow>(World, ServerRowClass);
+		if (!ensure(Row != nullptr)) return;
+
+		// Text To Display on Server List
+		Row->ServerName->SetText(FText::FromString(ServerName));
+
+		ServerList->AddChild(Row);
+	}
+
+
+}
+
 void UMainMenu::JoinServer()
 {
 	if (P_MenuInterface != nullptr)
 	{
-		// Get the entered IP Address String
-	/*	if (!ensure(IPAddressField != nullptr)) return;
-		const FString& Address = IPAddressField->GetText().ToString();
-		P_MenuInterface->Join(Address);*/
+		/* Get the entered IP Address String*/
+		/*if (!ensure(IPAddressField != nullptr)) return;
+		const FString& Address = IPAddressField->GetText().ToString();*/
+		//P_MenuInterface->Join(Address);
 
-		UWorld* World = this->GetWorld();
-		if (!ensure(World != nullptr)) return;
+		P_MenuInterface->Join("");
 
-		UServerRow* Row = CreateWidget<UServerRow>(World, ServerRowClass);
-		if (!ensure(Row != nullptr)) return;
 
-		ServerList->AddChild(Row);
 	}
 }
 
@@ -87,6 +105,11 @@ void UMainMenu::OpenJoinMenu()
 	if (!ensure(MenuSwitcher != nullptr)) return;
 	if (!ensure(JoinMenu != nullptr)) return;
 	MenuSwitcher->SetActiveWidget(JoinMenu);
+
+	if (P_MenuInterface != nullptr)
+	{
+		P_MenuInterface->RefreshingServerList();
+	}
 
 
 }

@@ -7,11 +7,15 @@
 #include "ServerRow.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class UE_MULTIPLAYERTEMP_API UServerRow : public UUserWidget
 {
 	GENERATED_BODY()
-	
+
+public:
+	UPROPERTY(meta = (BindWidget))
+		class UTextBlock* ServerName;
+
 };
