@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
 #include "OnlineSubsystem.h"
+#include "Interfaces/OnlineSessionInterface.h"
 
 // Not Modular <Here>
 #include "UE_MultiplayerTemp/MenuSystem/MenuInterface.h"
@@ -25,7 +26,10 @@ public:
         void Host() override;
 
     UFUNCTION(Exec)
-        void Join(const FString& Address) override;
+        void Join(uint32 Index) override;
+
+    //UFUNCTION(Exec)
+    //    void Join(const FString& Address) override;
 
     UFUNCTION(BlueprintCallable)
         void LoadMenuWidget();
@@ -52,6 +56,7 @@ private:
     void OnCreateSessionComplete(FName SessionName, bool Success);
     void OnDestroySessionComplete(FName SessionName, bool Success);
     void OnFindSessionsComplete(bool Success);
+    void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 
     void CreateSession();
 

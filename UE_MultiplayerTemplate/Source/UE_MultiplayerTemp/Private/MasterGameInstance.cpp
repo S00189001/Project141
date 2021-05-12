@@ -7,7 +7,6 @@
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
 #include "OnlineSessionSettings.h"
-#include "Interfaces/OnlineSessionInterface.h"
 
 #include "PlatformTrigger.h"
 // Not Moduler <Here>
@@ -47,8 +46,8 @@ void UMasterGameInstance::Init()
 			SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UMasterGameInstance::OnCreateSessionComplete);
 			SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this, &UMasterGameInstance::OnDestroySessionComplete);
 			SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UMasterGameInstance::OnFindSessionsComplete);
+			SessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UMasterGameInstance::OnJoinSessionComplete);
 
-	
 		}
 	}
 	else
@@ -180,26 +179,45 @@ void UMasterGameInstance::OnFindSessionsComplete(bool Success)
 	}
 }
 
-void UMasterGameInstance::Join(const FString& Address)
+void UMasterGameInstance::Join(uint32 Index)
 {
+	if (!SessionInterface.IsValid()) return;
+	if (!SessionSearch.IsValid()) return;
+
+	SessionInterface->JoinSession(0, SESSION_NAME, SessionSearch->SearchResults[Index]);
 
 
 	if (Menu != nullptr)
 	{
-		Menu->SetServerList({"Test1", "Test2"});
-		/*Menu->MenuTeardown();*/
+		Menu->MenuTeardown();
 	}
 
-	//UEngine* Engine = GetEngine();
-	//if (!ensure(Engine != nullptr)) return;
 
-	//Engine->AddOnScreenDebugMessage(0, 5, FColor::Green, FString::Printf(TEXT("Joining %s"), *Address));
 
-	//// Get Player Controller
-	//APlayerController* PlayerController = GetFirstLocalPlayerController();
-	//if (!ensure(PlayerController != nullptr)) return;
 
-	//PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute);
+}
+
+void UMasterGameInstance::OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result)
+{
+	if (!SessionInterface.IsValid()) return;
+
+	FString Address;
+	if (!SessionInterface->GetResolvedConnectString(SessionName, Address))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Could NOT get connect String"));
+		return;
+	}
+
+	UEngine* Engine = GetEngine();
+	if (!ensure(Engine != nullptr)) return;
+
+	Engine->AddOnScreenDebugMessage(0, 5, FColor::Green, FString::Printf(TEXT("Joining %s"), *Address));
+
+	// Get Player Controller
+	APlayerController* PlayerController = GetFirstLocalPlayerController();
+	if (!ensure(PlayerController != nullptr)) return;
+
+	PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute);
 
 }
 
