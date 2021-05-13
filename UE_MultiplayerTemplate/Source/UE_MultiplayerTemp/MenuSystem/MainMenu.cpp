@@ -28,7 +28,17 @@ bool UMainMenu::Initialize()
 	// Binding to a button in Main Menu (Host)
 	if (!ensure(HostButton != nullptr)) return false;
 	// Call for binding
-	HostButton->OnClicked.AddDynamic(this, &UMainMenu::HostServer);
+	HostButton->OnClicked.AddDynamic(this, &UMainMenu::OpenHostMenu);
+
+	// Binding to a button in Host Menu (Back)
+	if (!ensure(CancelHostMenuButton != nullptr)) return false;
+	// Call for binding
+	CancelHostMenuButton->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
+
+	// Binding to a button in Host Menu (HostServer)
+	if (!ensure(ConfirmHostMenuButton != nullptr)) return false;
+	// Call for binding
+	ConfirmHostMenuButton->OnClicked.AddDynamic(this, &UMainMenu::HostServer);
 
 	// Binding to a button in Main Menu (Join)
 	if (!ensure(JoinButton != nullptr)) return false;
@@ -44,13 +54,20 @@ bool UMainMenu::Initialize()
 	if (!ensure(CancelJoinMenuButton != nullptr)) return false;
 	// Call for binding
 	CancelJoinMenuButton->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
-
-	// Binding to a button in Main Menu (JoinServer)
+	
+	// Binding to a button in Join Menu (JoinServer)
 	if (!ensure(ConfirmJoinMenuButton != nullptr)) return false;
 	// Call for binding
 	ConfirmJoinMenuButton->OnClicked.AddDynamic(this, &UMainMenu::JoinServer);
 
 	return true;
+}
+
+void UMainMenu::OpenHostMenu()
+{
+	if (!ensure(MenuSwitcher != nullptr)) return;
+	if (!ensure(HostMenu != nullptr)) return;
+	MenuSwitcher->SetActiveWidget(HostMenu);
 }
 
 void UMainMenu::HostServer()
@@ -59,7 +76,8 @@ void UMainMenu::HostServer()
 
 	if (P_MenuInterface != nullptr)
 	{
-		P_MenuInterface->Host("Hello");
+		FString ServerName = ServerHostName->Text.ToString();
+		P_MenuInterface->Host(ServerName);
 	}
 
 }
@@ -147,6 +165,7 @@ void UMainMenu::OpenJoinMenu()
 
 
 }
+
 
 void UMainMenu::OpenMainMenu()
 {
