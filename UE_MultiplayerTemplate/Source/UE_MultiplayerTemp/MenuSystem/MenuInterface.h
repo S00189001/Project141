@@ -25,7 +25,7 @@ class UE_MULTIPLAYERTEMP_API IMenuInterface
 		// ( = 0 is empty implementation)
 		//Expects game instance to implement the functionality
 public:
-		virtual void Host() = 0;
+		virtual void Host(FString ServerName) = 0;
 		virtual void Join(uint32 Index) = 0;
 		//virtual void Join(const FString& Address) = 0;
 		virtual void LoadMainMenu() = 0;

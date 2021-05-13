@@ -8,6 +8,21 @@
 
 #include "MainMenu.generated.h"
 
+USTRUCT()
+struct FServerData
+{
+	GENERATED_BODY();
+
+	// Server Name
+	FString Name;
+	//  Current Players
+	uint16 CurrentPlayers;
+	// Max Players
+	uint16 MaxPlayers;
+	// Server / Host Username
+	FString HostUsername;
+};
+
 /**
  * 
  */
@@ -19,7 +34,7 @@ public:
 	// Constructor
 	UMainMenu(const FObjectInitializer& ObjectInitializer);
 
-	void SetServerList(TArray<FString> ServerNames);
+	void SetServerList(TArray<FServerData> ServerNames);
 
 	void SelectIndex(uint32 Index);
 

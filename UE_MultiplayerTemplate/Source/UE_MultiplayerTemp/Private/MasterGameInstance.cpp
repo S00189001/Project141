@@ -14,6 +14,7 @@
 #include "UE_MultiplayerTemp/MenuSystem/MenuWidget.h"
 
 const static FName SESSION_NAME = TEXT("My Session Game");
+const static FName SERVER_NAME_SETTINGS_KEY = TEXT("ServerName");
 
 UMasterGameInstance::UMasterGameInstance(const FObjectInitializer& ObjectInitializer)
 {
@@ -86,8 +87,10 @@ void UMasterGameInstance::InGameLoadMenu()
 }
 
 
-void UMasterGameInstance::Host()
+void UMasterGameInstance::Host(FString ServerName)
 {
+	DesiredServerName = ServerName;
+
 	if (SessionInterface.IsValid())
 	{
 		// Check if Session Exists
@@ -118,11 +121,22 @@ void UMasterGameInstance::CreateSession()
 	{
 		// Create Session + Setting Settings
 		FOnlineSessionSettings SessionSettings;
-		SessionSettings.bIsLANMatch = false;
+		// Get Subsystem
+		if (IOnlineSubsystem::Get()->GetSubsystemName() == "NULL")
+		{
+			SessionSettings.bIsLANMatch = true;
+		}
+		else
+		{
+			// Set LANMatch = True when not using steam (-nosteam) and false when using steam
+			SessionSettings.bIsLANMatch = false;
+		}
+
 		SessionSettings.NumPublicConnections = 2;
 		SessionSettings.bShouldAdvertise = true;
 		// For Steam
 		SessionSettings.bUsesPresence = true;
+		SessionSettings.Set(SERVER_NAME_SETTINGS_KEY, DesiredServerName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 
 		SessionInterface->CreateSession(0, SESSION_NAME, SessionSettings);
 	}
@@ -176,17 +190,31 @@ void UMasterGameInstance::OnFindSessionsComplete(bool Success)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Finished Find Session"));
 
-		TArray<FString> ServerNames;
-		// Test Data
-		ServerNames.Add("Test Server 1");
-		ServerNames.Add("Test Server 2");
-		ServerNames.Add("Test Server 3");
-		ServerNames.Add("Test Server 4");
+		TArray<FServerData> ServerNames;
 
 		for (const FOnlineSessionSearchResult& SearchResult : SessionSearch->SearchResults)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Found Session Name: %s"), *SearchResult.GetSessionIdStr());
-			ServerNames.Add(SearchResult.GetSessionIdStr());
+			FServerData Data;
+			Data.Name = SearchResult.GetSessionIdStr();
+			Data.MaxPlayers = SearchResult.Session.SessionSettings.NumPublicConnections;
+			Data.CurrentPlayers = Data.MaxPlayers - SearchResult.Session.NumOpenPublicConnections;
+			Data.HostUsername = SearchResult.Session.OwningUserName;
+
+			FString ServerName;
+			if (SearchResult.Session.SessionSettings.Get(SERVER_NAME_SETTINGS_KEY, ServerName))
+			{
+				//UE_LOG(LogTemp, Warning, TEXT("Data found in settings: %s"), *ServerName);
+				Data.Name = ServerName;
+			}
+			else
+			{
+				//UE_LOG(LogTemp, Warning, TEXT("Data Not found in settings"));
+				Data.Name = "Could not find Name.";
+
+			}
+
+			ServerNames.Add(Data);
 		}
 
 		Menu->SetServerList(ServerNames);
