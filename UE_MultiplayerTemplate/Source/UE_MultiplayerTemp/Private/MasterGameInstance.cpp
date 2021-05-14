@@ -56,6 +56,11 @@ void UMasterGameInstance::Init()
 		UE_LOG(LogTemp, Warning, TEXT("Found No Subsystem"));
 	}
 
+	if (GEngine != nullptr)
+	{
+		GEngine->OnNetworkFailure().AddUObject(this, &UMasterGameInstance::OnNetworkFailure);
+	}
+
 	//UE_LOG(LogTemp, Warning, TEXT("Found Class %s"), *MenuClass->GetName());
 
 
@@ -115,6 +120,11 @@ void UMasterGameInstance::OnDestroySessionComplete(FName SessionName, bool Succe
 	}
 }
 
+void UMasterGameInstance::OnNetworkFailure(UWorld* World, UNetDriver* NetDriver, ENetworkFailure::Type FailureType, const FString& ErrorString)
+{
+	LoadMainMenu();
+}
+
 void UMasterGameInstance::CreateSession()
 {
 	if (SessionInterface.IsValid())
@@ -132,9 +142,9 @@ void UMasterGameInstance::CreateSession()
 			SessionSettings.bIsLANMatch = false;
 		}
 
-		SessionSettings.NumPublicConnections = 2;
+		SessionSettings.NumPublicConnections = 5;
 		SessionSettings.bShouldAdvertise = true;
-		// For Steam
+		// For Steam Lobby Stystem
 		SessionSettings.bUsesPresence = true;
 		SessionSettings.Set(SERVER_NAME_SETTINGS_KEY, DesiredServerName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 
@@ -172,11 +182,12 @@ void UMasterGameInstance::RefreshingServerList()
 	if (SessionSearch.IsValid())
 	{
 		// because of sharing an app id
-		SessionSearch->MaxSearchResults = 100;
+		SessionSearch->MaxSearchResults = 1000;
 		// Steam - Allows for search presence
 		SessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
 
-		SessionSearch->bIsLanQuery = true;
+		// DISABLED FOR STEAM
+		//SessionSearch->bIsLanQuery = true;
 		//SessionSearch->QuerySettings.
 		UE_LOG(LogTemp, Warning, TEXT("Starting Find Session"));
 		SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
