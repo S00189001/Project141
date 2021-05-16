@@ -1,37 +1,30 @@
-## Welcome to GitHub Pages
+## Manabound
 
-You can use the [editor on GitHub](https://github.com/S00189001/Project141/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+## Introduction
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Progress
+### Week One
 
-### Markdown
+For our first week of the project, we had mostly been brainstorming ideas for the type of game we want to develop.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+### Week Two
 
-# Header 1
-## Header 2
-### Header 3
+Our first couple of weeks where dedicated to research and planning for our project so that it we would get a better understanding of how we will accomplish certain tasks as well as to create a base guidline to stick to throughout the projects development. 
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+Having spent a lot of time researching various game genres and mechanics before we decided that we would develop an online multiplayer, fantasy, survival game which would be inspired from games such as Rust, Ark and 7DTD with our target release platform being Steam. Although the idea will be heavely inspired from these games, we had designed a unique skill and ability system which will make ours stand out.
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+### Week Three
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Having completed our research and a lot of planning, we where ready to begin developing our game. Throughout the week, We have created a basic menu system, set-up the foundations and currently have working multiplayer using Steam services. 
 
-### Jekyll Themes
+###Main Menu
+![image](UE_MultiplayerTemplate/GHPages_Images/Menu.PNG)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/S00189001/Project141/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+As we are a small team of two and would have multiple roles to cover such as creating our own assets, we decided to learn a new software which we would be using called Blender. This would give us a lot more control over how the game will look as well as keeping the games art style consistant.
 
-### Support or Contact
+// Img of render
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
