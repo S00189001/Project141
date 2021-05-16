@@ -1,37 +1,43 @@
-## Welcome to GitHub Pages
+## Introduction
 
-You can use the [editor on GitHub](https://github.com/S00189001/Project141/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+## Progress
+### Week One
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+For our first week of the project, we had mostly been brainstorming ideas for the type of game we want to develop.
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Week Two
 
-```markdown
-Syntax highlighted code block
+Our first couple of weeks where dedicated to research and planning for our project so that it we would get a better understanding of how we will accomplish certain tasks as well as to create a base guidline to stick to throughout the projects development. 
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+Having spent a lot of time researching various game genres and mechanics before we decided that we would develop an online multiplayer, fantasy, survival game which would be inspired from games such as Rust, Ark and 7DTD with our target release platform being Steam. Although the idea will be heavely inspired from these games, we had designed a unique skill and ability system which will make ours stand out.
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+### Week Three
 
-[Link](url) and ![Image](src)
-```
+Having completed our research and a lot of planning, we where ready to begin developing our game. Throughout the week, We have created a basic menu system, set-up the foundations and currently have working multiplayer using Steam services. 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+(_Main Menu_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Menu.PNG)
 
-### Jekyll Themes
+(_Host Menu_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Host.PNG)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/S00189001/Project141/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+(_Server List Menu_)
+![image](UE_MultiplayerTemplate/GHPages_Images/ServerLsit.PNG)
 
-### Support or Contact
+(_2 players connected_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Connected.PNG)
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+(_Escape Menu_)
+![image](UE_MultiplayerTemplate/GHPages_Images/EscMenu.PNG)
+
+
+As we where thinking about possibly using random generation in our game for landscapes, we found a tool which uses a voxel system
+
+As we are a small team of two and would have multiple roles to cover such as creating our own assets, we decided to learn a new software which we would be using called Blender. This would give us a lot more control over how the game will look as well as keeping the games art style consistant.
+
+
+
+
