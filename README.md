@@ -1,5 +1,3 @@
-## Manabound
-
 ## Introduction
 
 ## Progress
@@ -20,11 +18,26 @@ Having spent a lot of time researching various game genres and mechanics before 
 
 Having completed our research and a lot of planning, we where ready to begin developing our game. Throughout the week, We have created a basic menu system, set-up the foundations and currently have working multiplayer using Steam services. 
 
-###Main Menu
+(_Main Menu_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/Menu.PNG)
+
+(_Host Menu_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Host.PNG)
+
+(_Server List Menu_)
+![image](UE_MultiplayerTemplate/GHPages_Images/ServerLsit.PNG)
+
+(_2 players connected_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Connected.PNG)
+
+(_Escape Menu_)
+![image](UE_MultiplayerTemplate/GHPages_Images/EscMenu.PNG)
+
+
+As we where thinking about possibly using random generation in our game for landscapes, we found a tool which uses a voxel system
 
 As we are a small team of two and would have multiple roles to cover such as creating our own assets, we decided to learn a new software which we would be using called Blender. This would give us a lot more control over how the game will look as well as keeping the games art style consistant.
 
-// Img of render
+
 
 
