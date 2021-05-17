@@ -37,14 +37,13 @@ We decided to use the Voxel plugin for unreal as it allows us to randomly genera
 The free version of the plugin provided us with basic terrain generation and allowed us to shape our worlds but it was missing the ability to spawn meshes so we could not paint our foliage. We then decided to use the pro version which came with this feature and allowed us to edit the terrain and control it using graphs.
 
 (_Terrain Manipulation And generation Using Voxels_)
-![image](UE_MultiplayerTemplate/GHPages_Images/Voxel.PNG)
+![image](UE_MultiplayerTemplate/GHPages_Images/Voxel.png)
 
 (_Cave System Using Voxels_)
-![image](UE_MultiplayerTemplate/GHPages_Images/Cave.PNG)
+![image](UE_MultiplayerTemplate/GHPages_Images/Cave.png)
 
 As we are a small team of two and would have multiple roles to cover such as creating our own assets, we decided to learn a new software which we would be using called Blender. This would give us a lot more control over how the game will look as well as keeping the games art style consistant, this didn't prove to time consuming as all members of the team have experience with asset creation.
 
 (_Modelling Practice Using New Software (Blender)_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/ModellingPractice.png)
-
 
