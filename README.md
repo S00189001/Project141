@@ -33,11 +33,18 @@ Having completed our research and a lot of planning, we where ready to begin dev
 (_Escape Menu_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/EscMenu.PNG)
 
+We decided to use the Voxel plugin for unreal as it allows us to randomly generate terrains which would help with speed when designing levels and a possible feature for the player to use to interact / manipulate terrain. 
+The free version of the plugin provided us with basic terrain generation and allowed us to shape our worlds but it was missing the ability to spawn meshes so we could not paint our foliage. We then decided to use the pro version which came with this feature and allowed us to edit the terrain and control it using graphs.
 
-As we where thinking about possibly using random generation in our game for landscapes, we found a tool which uses a voxel system
+(_Terrain Manipulation And generation Using Voxels_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Voxel.PNG)
 
-As we are a small team of two and would have multiple roles to cover such as creating our own assets, we decided to learn a new software which we would be using called Blender. This would give us a lot more control over how the game will look as well as keeping the games art style consistant.
+(_Cave System Using Voxels_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Cave.PNG)
 
+As we are a small team of two and would have multiple roles to cover such as creating our own assets, we decided to learn a new software which we would be using called Blender. This would give us a lot more control over how the game will look as well as keeping the games art style consistant, this didn't prove to time consuming as all members of the team have experience with asset creation.
 
+(_Modelling Practice Using New Software (Blender)_)
+![image](UE_MultiplayerTemplate/GHPages_Images/ModellingPractice.png)
 
 
