@@ -4,6 +4,27 @@
 
 ### Week Four
 This week we have been studying on how to use the voxel foliage spawn system on different heights of a IQ noise map. After alot of trail and error we finally managed to get a basic terrain immplemented witch had different height spawners depending on the how high the land was above sea level. We then adjusted the spawners and turned off shadows for grass, flowers and small rocks to improve performance. 
+
+(_World Height Map_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Landscape1.png)
+This height map was created using an IQ noise and we then applied textures to it depending on how high each area was from sea level.
+
+(_Forest_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Landscape2.png)
+Picture of the forest area with all foliage spawning as intended.
+
+(_Volumetric Fog_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Landscape3.png)
+Showcasing a light blue/aquamarine tint to volumetric fog in our forest and near shore height.
+
+(_Shore_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Landscape4.png)
+Picture of the shore area near the forest
+
+(_Cave_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Landscape5.png)
+Picture of a hand sculpted cave using the voxel terrain manipulator tools and unreal 4.26 water 
+
 ### Week Three
 
 Having completed our research and a lot of planning, we where ready to begin developing our game. Throughout the week, We have created a basic menu system, set-up the foundations and currently have working multiplayer using Steam services. 
