@@ -4,10 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+
+#include "AbilitySystemInterface.h"
+#include <GameplayEffectTypes.h>
+
 #include "UE_MultiplayerTempCharacter.generated.h"
 
 UCLASS(config=Game)
-class AUE_MultiplayerTempCharacter : public ACharacter
+class AUE_MultiplayerTempCharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -18,6 +22,14 @@ class AUE_MultiplayerTempCharacter : public ACharacter
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
+
+	// Add Ability System Comps
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+		class UGASAbilitySystemComponent* AbilitySystemComponent;
+
+	UPROPERTY()
+		class UGASAttributeSet* Attributes;
+
 public:
 	AUE_MultiplayerTempCharacter();
 
@@ -28,6 +40,27 @@ public:
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
+
+	// Function for Ability System
+	virtual class UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+
+	virtual void InitializeAttributes();
+	virtual void GiveAbilities();
+
+	// Called on the server
+	virtual void PossessedBy(AController* NewController) override;
+	// Called on the client
+	virtual void OnRep_PlayerState()override;
+
+	// Effect that initializes our default attributes
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GAS")
+		TSubclassOf<class UGameplayEffect> DefaultAttributeEffect;
+
+	// Effect that initializes our default Abilities
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GAS")
+		TArray<TSubclassOf<class UGASGameplayAbility>> DefaultAbilities;
+
+
 
 protected:
 

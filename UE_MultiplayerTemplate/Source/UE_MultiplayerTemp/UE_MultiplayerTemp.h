@@ -14,7 +14,7 @@
 //};
 
 UENUM(BlueprintType)
-enum EGASAbilityInputID
+enum class EGASAbilityInputID : uint8
 {
 	None,
 	Confirm,

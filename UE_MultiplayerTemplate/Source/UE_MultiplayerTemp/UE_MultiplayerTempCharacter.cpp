@@ -8,6 +8,12 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include <GameplayAbilities/Public/AbilitySystemComponent.h>
+
+#include "UE_MultiplayerTemp/AbilitySystem/GASGameplayAbility.h"
+#include "UE_MultiplayerTemp/AbilitySystem/GASAbilitySystemComponent.h"
+#include "UE_MultiplayerTemp/AbilitySystem/GASAttributeSet.h"
+#include "GameplayEffectTypes.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AUE_MultiplayerTempCharacter
@@ -43,6 +49,13 @@ AUE_MultiplayerTempCharacter::AUE_MultiplayerTempCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
+	// AbilityStystem
+	AbilitySystemComponent = CreateDefaultSubobject<UGASAbilitySystemComponent>("AbilitySystemComp");
+	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
+	
+	Attributes = CreateDefaultSubobject<UGASAttributeSet>("Attributes");
+
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 }
@@ -74,8 +87,90 @@ void AUE_MultiplayerTempCharacter::SetupPlayerInputComponent(class UInputCompone
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AUE_MultiplayerTempCharacter::OnResetVR);
+
+	// Ability System
+	if (AbilitySystemComponent && InputComponent)
+	{
+		const FGameplayAbilityInputBinds Binds("Confirm", "Cancel", "EGASAbilityInputID",
+			static_cast<int32>(EGASAbilityInputID::Confirm),
+			static_cast<int32>(EGASAbilityInputID::Cancel));
+		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent, Binds);
+	}
+
 }
 
+
+UAbilitySystemComponent* AUE_MultiplayerTempCharacter::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
+// Ability System
+void AUE_MultiplayerTempCharacter::InitializeAttributes()
+{
+	// Apply default effects to character
+	if (AbilitySystemComponent && DefaultAttributeEffect)
+	{
+		// Context handle is info on how we plan to use the effect
+		FGameplayEffectContextHandle EffectContext = AbilitySystemComponent->MakeEffectContext();
+		EffectContext.AddSourceObject(this);
+
+		// Handles ability levels 
+		FGameplayEffectSpecHandle SpecHandle = AbilitySystemComponent->MakeOutgoingSpec(DefaultAttributeEffect, 1, EffectContext);
+
+		if (SpecHandle.IsValid())
+		{
+			// Applying effect to SELF (Can Change to TARGET)
+			FActiveGameplayEffectHandle GEHandle = AbilitySystemComponent->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
+
+		}
+	}
+}
+
+void AUE_MultiplayerTempCharacter::GiveAbilities()
+{
+	// If its from the server and ASC is valid
+	if (HasAuthority() && AbilitySystemComponent)
+	{
+		// Loop over default abilities
+		for (TSubclassOf<UGASGameplayAbility>& StartupAbility : DefaultAbilities)
+		{
+			// Can change level of ability to give
+			AbilitySystemComponent->GiveAbility(
+				FGameplayAbilitySpec(StartupAbility, 1, static_cast<int32>(StartupAbility.GetDefaultObject()->AbilityInputID), this));
+		}
+	}
+}
+
+void AUE_MultiplayerTempCharacter::PossessedBy(AController* NewController)
+{
+	// Only server should give abilities
+	Super::PossessedBy(NewController);
+
+	// Server GAS init - Tell Ability system who the owner is
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+
+	InitializeAttributes();
+	GiveAbilities();
+
+}
+
+void AUE_MultiplayerTempCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+
+	InitializeAttributes();
+
+	if (AbilitySystemComponent && InputComponent)
+	{
+		const FGameplayAbilityInputBinds Binds("Confirm", "Cancel", "EGASAbilityInputID",
+			static_cast<int32>(EGASAbilityInputID::Confirm),
+			static_cast<int32>(EGASAbilityInputID::Cancel));
+		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent, Binds);
+	}
+}
 
 void AUE_MultiplayerTempCharacter::OnResetVR()
 {
