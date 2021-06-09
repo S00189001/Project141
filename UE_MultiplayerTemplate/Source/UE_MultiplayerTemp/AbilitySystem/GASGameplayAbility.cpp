@@ -4,3 +4,7 @@
 //#include "AbilitySystem/GASGameplayAbility.h"
 #include "GASGameplayAbility.h"
 
+UGASGameplayAbility::UGASGameplayAbility()
+{
+
+}

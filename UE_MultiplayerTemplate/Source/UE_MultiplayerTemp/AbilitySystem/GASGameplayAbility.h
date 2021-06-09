@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
+#include "UE_MultiplayerTemp/UE_MultiplayerTemp.h"
 #include "GASGameplayAbility.generated.h"
 
 /**
@@ -14,4 +15,11 @@ class UE_MULTIPLAYERTEMP_API UGASGameplayAbility : public UGameplayAbility
 {
 	GENERATED_BODY()
 	
+public:
+
+	UGASGameplayAbility();
+
+	// Abilities with this set will automatically activate when the input is pressed
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Ability")
+		EGASAbilityInputID AbilityInputID = EGASAbilityInputID::None;
 };
