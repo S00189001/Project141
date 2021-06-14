@@ -62,16 +62,27 @@ public:
 	UFUNCTION()
 		virtual void OnRep_Mana(const FGameplayAttributeData& OldMana);
 
-	//// AttackPower Attribute
-	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_AttackPower)
-
-		FGameplayAttributeData AttackPower;
+	//// Oxygen Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_Oxygen)
+		FGameplayAttributeData Oxygen;
 
 	// Macro for getters / setters
-	ATTRIBUTE_ACCESSORS(UGASAttributeSet, AttackPower);
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, Oxygen);
 
 	UFUNCTION()
-		virtual void OnRep_AttackPower(const FGameplayAttributeData& OldAttackPower);
+		virtual void OnRep_Oxygen(const FGameplayAttributeData& OldOxygen);
+
+
+	////// AttackPower Attribute
+	//UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_AttackPower)
+
+	//	FGameplayAttributeData AttackPower;
+
+	//// Macro for getters / setters
+	//ATTRIBUTE_ACCESSORS(UGASAttributeSet, AttackPower);
+
+	//UFUNCTION()
+	//	virtual void OnRep_AttackPower(const FGameplayAttributeData& OldAttackPower);
 
 	//// Physical Attack Attribute
 	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_PhysicalAttack)

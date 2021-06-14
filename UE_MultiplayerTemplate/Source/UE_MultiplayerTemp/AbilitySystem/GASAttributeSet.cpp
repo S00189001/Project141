@@ -21,8 +21,9 @@ void UGASAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Health, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Stamina, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Mana, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Oxygen, COND_None, REPNOTIFY_Always);
 
-	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, AttackPower, COND_None, REPNOTIFY_Always);
+	//DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, AttackPower, COND_None, REPNOTIFY_Always);
 
 	// Player Attack / Defence Attributes
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, PhysicalAttack, COND_None, REPNOTIFY_Always);
@@ -54,11 +55,17 @@ void UGASAttributeSet::OnRep_Mana(const FGameplayAttributeData& OldMana)
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, Mana, PreviousValue);
 }
 
-void UGASAttributeSet::OnRep_AttackPower(const FGameplayAttributeData& OldAttackPower)
+void UGASAttributeSet::OnRep_Oxygen(const FGameplayAttributeData& OldOxygen)
 {
-	const auto PreviousValue = OldAttackPower.GetCurrentValue();
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, AttackPower, PreviousValue);
+	const auto PreviousValue = OldOxygen.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, Oxygen, PreviousValue);
 }
+
+//void UGASAttributeSet::OnRep_AttackPower(const FGameplayAttributeData& OldAttackPower)
+//{
+//	const auto PreviousValue = OldAttackPower.GetCurrentValue();
+//	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, AttackPower, PreviousValue);
+//}
 
 void UGASAttributeSet::OnRep_PhysicalAttack(const FGameplayAttributeData& OldPhysicalAttack)
 {
