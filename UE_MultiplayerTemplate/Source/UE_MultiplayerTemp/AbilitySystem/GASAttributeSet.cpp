@@ -17,9 +17,21 @@ void UGASAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 	// Replicate props
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
+	// Base Attributes
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Health, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Stamina, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Mana, COND_None, REPNOTIFY_Always);
+
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, AttackPower, COND_None, REPNOTIFY_Always);
+
+	// Player Attack / Defence Attributes
+	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, PhysicalAttack, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, MagicAttack, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, PhysicalDefence, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, MagicDefence, COND_None, REPNOTIFY_Always);
+
+	// Player Resistances
+	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, FireResistance, COND_None, REPNOTIFY_Always);
 
 }
 
@@ -36,8 +48,65 @@ void UGASAttributeSet::OnRep_Stamina(const FGameplayAttributeData& OldStamina)
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, Stamina, PreviousValue);
 }
 
+void UGASAttributeSet::OnRep_Mana(const FGameplayAttributeData& OldMana)
+{
+	const auto PreviousValue = OldMana.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, Mana, PreviousValue);
+}
+
 void UGASAttributeSet::OnRep_AttackPower(const FGameplayAttributeData& OldAttackPower)
 {
 	const auto PreviousValue = OldAttackPower.GetCurrentValue();
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, AttackPower, PreviousValue);
 }
+
+void UGASAttributeSet::OnRep_PhysicalAttack(const FGameplayAttributeData& OldPhysicalAttack)
+{
+	const auto PreviousValue = OldPhysicalAttack.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, PhysicalAttack, PreviousValue);
+}
+
+void UGASAttributeSet::OnRep_MagicAttack(const FGameplayAttributeData& OldMagicAttack)
+{
+	const auto PreviousValue = OldMagicAttack.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, MagicAttack, PreviousValue);
+}
+
+void UGASAttributeSet::OnRep_PhysicalDefence(const FGameplayAttributeData& OldPhysicalDefence)
+{
+	const auto PreviousValue = OldPhysicalDefence.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, PhysicalDefence, PreviousValue);
+}
+
+void UGASAttributeSet::OnRep_MagicDefence(const FGameplayAttributeData& OldMagicDefence)
+{
+	const auto PreviousValue = OldMagicDefence.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, MagicDefence, PreviousValue);
+}
+
+// Player Resistances
+
+void UGASAttributeSet::OnRep_FireResistance(const FGameplayAttributeData& OldFireResistance)
+{
+	const auto PreviousValue = OldFireResistance.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, FireResistance, PreviousValue);
+}
+
+void UGASAttributeSet::OnRep_EarthResistance(const FGameplayAttributeData& OldEarthResistance)
+{
+	const auto PreviousValue = OldEarthResistance.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, EarthResistance, PreviousValue);
+}
+
+void UGASAttributeSet::OnRep_WaterResistance(const FGameplayAttributeData& OldWaterResistance)
+{
+	const auto PreviousValue = OldWaterResistance.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, WaterResistance, PreviousValue);
+}
+
+void UGASAttributeSet::OnRep_AirResistance(const FGameplayAttributeData& OldAirResistance)
+{
+	const auto PreviousValue = OldAirResistance.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, AirResistance, PreviousValue);
+}
+
