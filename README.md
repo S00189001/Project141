@@ -2,6 +2,36 @@
 
 ## Progress
 
+### Week Seven
+This week using the ability system we previously set-up, we have created a new attribute set that each player will be given as default such as:
+
+  - Physical Attack
+  - Physical Defence
+  - Magic Attack
+  - Magic Defence
+  - Health
+  - Stamina
+  - Mana
+  - Oxygen
+  - Various Resistance Attributes
+
+As well as attributes, we had created the first default player abiltiy which was a simple melee attack. Using these attributes as well as the melee ability, we where able to deal damage from one player to another accross the network based on our attributes.
+
+Given that we will have various events happen based on time, we decided we would add a day / night cycle. In this day / night cycle we made sure that the sun skybox moved along  with the direction light.
+
+We looked into several different methods to impliment swimming, we choose to use the 3rd person character swimming enum. To allow the user to swim when they enter the water and float when they stop in water.
+
+LOD optomization
+
+### Week Six
+This week we decided to work on setting up the foundations for an ability system. Having spent time researching vaious ability systems, we found unreals GAS (Gameplay Ability System) and decided that we would use this in our project. Most of the week was learning how to use this system and setting up the foundations for abbilities and attributes sets to be created.
+
+// Images
+
+### Week Five
+Bank holiweek :)
+(Busy with personal events)
+
 ### Week Four
 This week we have been studying on how to use the voxel foliage spawn system on different heights of a IQ noise map. After alot of trail and error we finally managed to get a basic terrain immplemented witch had different height spawners depending on the how high the land was above sea level. We then adjusted the spawners and turned off shadows for grass, flowers and small rocks to improve performance. 
 
