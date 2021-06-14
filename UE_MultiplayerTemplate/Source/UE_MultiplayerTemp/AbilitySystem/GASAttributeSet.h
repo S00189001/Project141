@@ -52,16 +52,127 @@ public:
 	UFUNCTION()
 		virtual void OnRep_Stamina(const FGameplayAttributeData& OldStamina);
 
-	//// AttackPower Attribute
-	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_AttackPower)
-
-		FGameplayAttributeData AttackPower;
+	//// Mana Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_Mana)
+		FGameplayAttributeData Mana;
 
 	// Macro for getters / setters
-	ATTRIBUTE_ACCESSORS(UGASAttributeSet, AttackPower);
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, Mana);
 
 	UFUNCTION()
-		virtual void OnRep_AttackPower(const FGameplayAttributeData& OldAttackPower);
+		virtual void OnRep_Mana(const FGameplayAttributeData& OldMana);
+
+	//// Oxygen Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_Oxygen)
+		FGameplayAttributeData Oxygen;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, Oxygen);
+
+	UFUNCTION()
+		virtual void OnRep_Oxygen(const FGameplayAttributeData& OldOxygen);
+
+
+	////// AttackPower Attribute
+	//UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_AttackPower)
+
+	//	FGameplayAttributeData AttackPower;
+
+	//// Macro for getters / setters
+	//ATTRIBUTE_ACCESSORS(UGASAttributeSet, AttackPower);
+
+	//UFUNCTION()
+	//	virtual void OnRep_AttackPower(const FGameplayAttributeData& OldAttackPower);
+
+	//// Physical Attack Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_PhysicalAttack)
+
+		FGameplayAttributeData PhysicalAttack;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, PhysicalAttack);
+
+	UFUNCTION()
+		virtual void OnRep_PhysicalAttack(const FGameplayAttributeData& OldPhysicalAttack);
+
+	//// Magic Attack Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_MagicAttack)
+
+		FGameplayAttributeData MagicAttack;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, MagicAttack);
+
+	UFUNCTION()
+		virtual void OnRep_MagicAttack(const FGameplayAttributeData& OldMagicAttack);
+
+	//// Physical Defence Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_PhysicalDefence)
+
+		FGameplayAttributeData PhysicalDefence;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, PhysicalDefence);
+
+	UFUNCTION()
+		virtual void OnRep_PhysicalDefence(const FGameplayAttributeData& OldPhysicalDefence);
+
+	//// Magic Defence Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_MagicDefence)
+
+		FGameplayAttributeData MagicDefence;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, MagicDefence);
+
+	UFUNCTION()
+		virtual void OnRep_MagicDefence(const FGameplayAttributeData& OldMagicDefence);
+
+	// Player Resistances
+
+		//// Fire Resistance Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_FireResistance)
+
+		FGameplayAttributeData FireResistance;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, FireResistance);
+
+	UFUNCTION()
+		virtual void OnRep_FireResistance(const FGameplayAttributeData& OldFireResistance);
+
+	//// Earth Resistance Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_EarthResistance)
+
+		FGameplayAttributeData EarthResistance;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, EarthResistance);
+
+	UFUNCTION()
+		virtual void OnRep_EarthResistance(const FGameplayAttributeData& OldEarthResistance);
+
+	//// Water Resistance Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_WaterResistance)
+
+		FGameplayAttributeData WaterResistance;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, WaterResistance);
+
+	UFUNCTION()
+		virtual void OnRep_WaterResistance(const FGameplayAttributeData& OldWaterResistance);
+
+	//// Air Resistance Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_AirResistance)
+
+		FGameplayAttributeData AirResistance;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, AirResistance);
+
+	UFUNCTION()
+		virtual void OnRep_AirResistance(const FGameplayAttributeData& OldAirResistance);
 
 
 };
