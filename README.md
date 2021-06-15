@@ -15,7 +15,7 @@ This week using the ability system we previously set-up, we have created a new a
   - Oxygen
   - Various Resistance Attributes
 
-(_Attributes_)
+(_PlayerAttributes_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/Attributes.png)
 
 As well as attributes, we had created the first default player abiltiy which was a simple melee attack. Using these attributes as well as the melee ability, we where able to deal damage from one player to another accross the network based on our attributes.
@@ -26,7 +26,7 @@ As well as attributes, we had created the first default player abiltiy which was
 Given that we will have various events happen based on time, we decided we would add a day / night cycle. In this day / night cycle we made sure that the sun skybox moved along  with the direction light.
 
 (_Day/Night Cycle_)
-![image](UE_MultiplayerTemplate/GHPages_Images/DayNightCycle.png)
+![image](UE_MultiplayerTemplate/GHPages_Images/DayNightCycle2.png)
 
 We looked into several different methods to impliment swimming, we choose to use the 3rd person character swimming enum. To allow the user to swim when they enter the water and float when they stop in water.
 
