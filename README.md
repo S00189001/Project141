@@ -15,18 +15,34 @@ This week using the ability system we previously set-up, we have created a new a
   - Oxygen
   - Various Resistance Attributes
 
+(_Attributes_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Attributes.png)
+
 As well as attributes, we had created the first default player abiltiy which was a simple melee attack. Using these attributes as well as the melee ability, we where able to deal damage from one player to another accross the network based on our attributes.
+
+(_MeleeAttack_)
+![image](UE_MultiplayerTemplate/GHPages_Images/MeleeAttack1.png)
 
 Given that we will have various events happen based on time, we decided we would add a day / night cycle. In this day / night cycle we made sure that the sun skybox moved along  with the direction light.
 
+(_Day/Night Cycle_)
+![image](UE_MultiplayerTemplate/GHPages_Images/DayNightCycle.png)
+
 We looked into several different methods to impliment swimming, we choose to use the 3rd person character swimming enum. To allow the user to swim when they enter the water and float when they stop in water.
+
+(_Swimming1_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Swimming1.png)
+
+(_Swimming2_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Swimming2.png)
+
+(_Swimming3_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Swimming3.png)
 
 LOD optomization
 
 ### Week Six
 This week we decided to work on setting up the foundations for an ability system. Having spent time researching vaious ability systems, we found unreals GAS (Gameplay Ability System) and decided that we would use this in our project. Most of the week was learning how to use this system and setting up the foundations for abbilities and attributes sets to be created.
-
-// Images
 
 ### Week Five
 Bank holiweek :)
