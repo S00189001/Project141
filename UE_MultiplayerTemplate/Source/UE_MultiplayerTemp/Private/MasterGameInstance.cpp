@@ -13,7 +13,7 @@
 #include "UE_MultiplayerTemp/MenuSystem/MainMenu.h"
 #include "UE_MultiplayerTemp/MenuSystem/MenuWidget.h"
 
-const static FName SESSION_NAME = TEXT("My Session Game");
+const static FName SESSION_NAME = TEXT("Game");
 const static FName SERVER_NAME_SETTINGS_KEY = TEXT("ServerName");
 
 UMasterGameInstance::UMasterGameInstance(const FObjectInitializer& ObjectInitializer)
