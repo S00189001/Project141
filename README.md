@@ -15,9 +15,6 @@ This week using the ability system we previously set-up, we have created a new a
   - Oxygen
   - Various Resistance Attributes
 
-(_PlayerAttributes_)
-![image](UE_MultiplayerTemplate/GHPages_Images/PlayerAttributes.png)
-
 As well as attributes, we had created the first default player abiltiy which was a simple melee attack. Using these attributes as well as the melee ability, we where able to deal damage from one player to another accross the network based on our attributes.
 
 (_MeleeAttack_)
