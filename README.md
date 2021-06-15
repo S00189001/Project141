@@ -37,6 +37,7 @@ We looked into several different methods to impliment swimming, we choose to use
 ![image](UE_MultiplayerTemplate/GHPages_Images/Swimming3.png)
 
 LOD optomization
+Chunk size reduced from 64 to 32
 
 ### Week Six
 This week we decided to work on setting up the foundations for an ability system. Having spent time researching vaious ability systems, we found unreals GAS (Gameplay Ability System) and decided that we would use this in our project. Most of the week was learning how to use this system and setting up the foundations for abbilities and attributes sets to be created.
