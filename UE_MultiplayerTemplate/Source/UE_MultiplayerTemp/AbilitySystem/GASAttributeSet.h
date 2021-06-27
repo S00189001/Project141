@@ -72,6 +72,26 @@ public:
 	UFUNCTION()
 		virtual void OnRep_Oxygen(const FGameplayAttributeData& OldOxygen);
 
+	//// OverallDamageToDeal Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_OverallDamageToDeal)
+		FGameplayAttributeData OverallDamageToDeal;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, OverallDamageToDeal);
+
+	UFUNCTION()
+		virtual void OnRep_OverallDamageToDeal(const FGameplayAttributeData& OldOverallDamageToDeal);
+
+	//// OverallDamageToTake Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_OverallDamageToTake)
+		FGameplayAttributeData OverallDamageToTake;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, OverallDamageToTake);
+
+	UFUNCTION()
+		virtual void OnRep_OverallDamageToTake(const FGameplayAttributeData& OldOverallDamageToTake);
+
 
 	////// AttackPower Attribute
 	//UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_AttackPower)

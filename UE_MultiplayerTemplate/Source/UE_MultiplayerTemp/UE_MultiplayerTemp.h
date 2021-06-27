@@ -20,5 +20,5 @@ enum class EGASAbilityInputID : uint8
 	Confirm,
 	Cancel,
 	Punch,
-	AbilityTest
+	BuffAttackPower
 };
