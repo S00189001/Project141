@@ -8,13 +8,13 @@ This week we added 2 new attributes for the player, OverAllDamageToDeal and Over
 We added a new ability to the player which they could use to buff one of their stats, in this case, physical attack damage which would then be added to the players OverallDamageToDeal attribute. 
 
 (_BuffAbilityAnimation_)
-![image](UE_MultiplayerTemplate/GHPages_Images/BuffAnimation.png)
+![image](UE_MultiplayerTemplate/GHPages_Images/BuffAnimation.PNG)
 
 (_DefaultPhysicalDamage_)
-![image](UE_MultiplayerTemplate/GHPages_Images/DefaultPhysicalDamage.png)
+![image](UE_MultiplayerTemplate/GHPages_Images/DefaultPhysicalDamage.PNG)
 
 (_BuffedPhysicalDamage_)
-![image](UE_MultiplayerTemplate/GHPages_Images/BuffedPhysicalDamage.png)
+![image](UE_MultiplayerTemplate/GHPages_Images/BuffedPhysicalDamage.PNG)
 
 The majorty of the week was spent debugging and testing different abilities, one of the main problems we encountered was animation replication. To replicate the animations, we created gameplay cues that would play an animation montage. Through research we found that gameplay abilities cannot be replicated and that only gameplay cues and effects can.
 
@@ -24,15 +24,15 @@ One of the abilities we created, allowed the player to slide which worked accroe
 This week we decided to start the base for the players HUD. We added progress bars for the players health, stamina and magic attributes which will update based on the players current attributes. An 'action bar' has also been added which we plan to make use of with the ability system for dragable ability icons.
 
 (_MaxHealthBasicHUD_)
-![image](UE_MultiplayerTemplate/GHPages_Images/MaxHealth.png)
+![image](UE_MultiplayerTemplate/GHPages_Images/MaxHealth.PNG)
 
 (_UpdatedhealthBasicHUD_)
-![image](UE_MultiplayerTemplate/GHPages_Images/UpdatedHealth.png)
+![image](UE_MultiplayerTemplate/GHPages_Images/UpdatedHealth.PNG)
 
 Up to now, we where only able to have 2 players max on a server at any one time despite allowing for 5 users, after some research we where able to fix this issue.
 
 (_ThreePlayersViaSteam_)
-![image](UE_MultiplayerTemplate/GHPages_Images/ThreePlayersViaSteam.png)
+![image](UE_MultiplayerTemplate/GHPages_Images/ThreePlayersViaSteam.PNG)
 
 Having reciently added an ability to punch, we face an issue with replication for animation and with many hours of trial and error we where able to finally replicate one client punching and damaging another client. 
 
