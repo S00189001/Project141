@@ -22,14 +22,40 @@ protected:
 private:
 	UPROPERTY(meta = (BindWidget))
 		class UButton* EscMenuResumeButton;
+
+	UPROPERTY(meta = (BindWidget))
+		class UButton* EscMenuKeybindsButton;
+
+	UPROPERTY(meta = (BindWidget))
+		class UButton* EscMenuSettingsButton;
 	
 	UPROPERTY(meta = (BindWidget))
 		class UButton* EscMenuExitButton;
+
+	// Manage Switcing Menus
+	UPROPERTY(meta = (BindWidget))
+		class UWidgetSwitcher* EscMenuSwitcher;
+
+	UPROPERTY(meta = (BindWidget))
+		class UWidget* KeybindsMenu;
 
 	UFUNCTION()
 		void ResumePressed();
 
 	UFUNCTION()
+		void KeybindsPressed();
+
+	UFUNCTION()
+		void SettingsPressed();
+
+	UFUNCTION()
 		void ExitPressed();
+
+	// Opening / closing windows
+	UFUNCTION()
+		void OpenKeybindsMenu();
+
+	UFUNCTION()
+		void OpenInGameEscMenu();
 
 };
