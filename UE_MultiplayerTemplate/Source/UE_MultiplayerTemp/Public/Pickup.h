@@ -14,4 +14,15 @@ class UE_MULTIPLAYERTEMP_API APickup : public AInteractable
 {
 	GENERATED_BODY()
 	
+public:
+
+	APickup();
+
+protected:
+
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* PickupMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName ItemID;
 };

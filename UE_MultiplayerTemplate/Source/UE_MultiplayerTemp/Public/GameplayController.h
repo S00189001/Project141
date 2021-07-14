@@ -16,6 +16,7 @@ class UE_MULTIPLAYERTEMP_API AGameplayController : public APlayerController
 
 public:
 	
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	class AInteractable* CurrentInteractable;
 	
 };
