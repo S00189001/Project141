@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include <UE_MultiplayerTemp/UE_MultiplayerTempCharacter.h>
 #include "GameplayController.generated.h"
+
+
 
 /**
  * 
@@ -16,7 +19,21 @@ class UE_MULTIPLAYERTEMP_API AGameplayController : public APlayerController
 
 public:
 	
+	UFUNCTION(BlueprintCallable, Category = "Utilities")
+	void AddItemToInvetoryByID(FName ID);
+
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	class AInteractable* CurrentInteractable;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	TArray<FInvetoryItem> Invetory;
+
+	
+
+protected:
+
+	void Interact();
+
+	virtual void SetupInputComponent() override;
 	
 };

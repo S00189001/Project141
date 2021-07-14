@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
+#include <UE_MultiplayerTemp/UE_MultiplayerTempCharacter.h>
 #include "GameplayGameMode.generated.h"
 
 /**

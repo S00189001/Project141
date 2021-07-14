@@ -18,11 +18,13 @@ public:
 
 	APickup();
 
+	
+
 protected:
 
 	UPROPERTY(EditAnywhere)
 		UStaticMeshComponent* PickupMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName ItemID;
+		FName ItemID;
 };
