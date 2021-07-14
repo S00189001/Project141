@@ -4,11 +4,86 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-
+#include "Engine/DataTable.h"
 #include "AbilitySystemInterface.h"
 #include <GameplayEffectTypes.h>
 
 #include "UE_MultiplayerTempCharacter.generated.h"
+
+USTRUCT(BlueprintType)
+struct FCraftingInfo : public FTableRowBase
+{
+	GENERATED_BODY();
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CraftingInfo")
+	FName ComponentID;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CraftingInfo")
+	FName ProductID;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CraftingInfo")
+	bool bDestroyItemA;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CraftingInfo")
+	bool bDestroyItemB;
+
+};
+
+USTRUCT(BlueprintType)
+struct FInvetoryItem : public FTableRowBase
+{
+
+	GENERATED_BODY()
+
+public:
+
+	FInvetoryItem()
+	{
+
+		Name = FText::FromString("Item");
+		Action = FText::FromString("Use");
+		Description = FText::FromString("Enter A Description");
+		Value = 1; //value of item 
+
+	}
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InvetorySystem")
+	FName ItemID;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InvetorySystem")
+	TSubclassOf<class APickup> ItemPickup;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InvetorySystem")
+	FText Name;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InvetorySystem")
+	FText Action;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InvetorySystem")
+	int32 Value;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InvetorySystem")
+	UTexture2D* Thumbnail;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InvetorySystem")
+	FText Description;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InvetorySystem")
+	TArray<FCraftingInfo> CraftCombinations;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InvetorySystem")
+	bool bCanBeUsed;
+
+	bool operator==(const FInvetoryItem& Item) const  // overloading the = operator cause C++ cant compare Invetory items
+	{
+		if (ItemID == Item.ItemID)
+			return true;
+		else return false;
+		
+	}
+};
 
 UCLASS(config=Game)
 class AUE_MultiplayerTempCharacter : public ACharacter, public IAbilitySystemInterface
@@ -63,6 +138,8 @@ public:
 
 
 protected:
+
+	void CheckForInteractables();
 
 	/** Resets HMD orientation in VR. */
 	void OnResetVR();

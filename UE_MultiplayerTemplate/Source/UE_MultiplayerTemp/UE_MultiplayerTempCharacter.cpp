@@ -1,6 +1,8 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "UE_MultiplayerTempCharacter.h"
+#include "Interactable.h"
+#include "GameplayController.h"
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -14,6 +16,8 @@
 #include "UE_MultiplayerTemp/AbilitySystem/GASAbilitySystemComponent.h"
 #include "UE_MultiplayerTemp/AbilitySystem/GASAttributeSet.h"
 #include "GameplayEffectTypes.h"
+
+
 
 //////////////////////////////////////////////////////////////////////////
 // AUE_MultiplayerTempCharacter
@@ -103,6 +107,34 @@ void AUE_MultiplayerTempCharacter::SetupPlayerInputComponent(class UInputCompone
 UAbilitySystemComponent* AUE_MultiplayerTempCharacter::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
+}
+
+void AUE_MultiplayerTempCharacter::CheckForInteractables()
+{
+	FHitResult HitResult;
+
+	FVector StartTrace = FollowCamera->GetComponentLocation();
+	FVector EndTrace = (FollowCamera->GetForwardVector() * 300) + StartTrace;
+
+	FCollisionQueryParams QueryParams;
+	QueryParams.AddIgnoredActor(this);
+
+	AGameplayController* controller = Cast<AGameplayController>(GetController());
+
+	if(GetWorld()->LineTraceSingleByChannel(HitResult, StartTrace, EndTrace, ECC_Visibility, QueryParams) && Controller)
+	{
+		//Checking if the item hit was an interactable item
+
+		if (AInteractable* Interactable = Cast<AInteractable>(HitResult.GetActor()))
+		{
+			controller->CurrentInteractable = Interactable;
+			return;
+		}
+		
+	}
+
+	//If we did not hit anything or the item hit was not an iteractable then set CurrentInteractable to nullptr
+	controller->CurrentInteractable = nullptr;
 }
 
 // Ability System

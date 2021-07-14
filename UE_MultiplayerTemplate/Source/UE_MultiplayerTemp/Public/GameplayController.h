@@ -13,5 +13,9 @@ UCLASS()
 class UE_MULTIPLAYERTEMP_API AGameplayController : public APlayerController
 {
 	GENERATED_BODY()
+
+public:
+	
+	class AInteractable* CurrentInteractable;
 	
 };
