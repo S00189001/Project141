@@ -3,6 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine.h"
+
+#define COLLISION_INTERACTABLE ECC_GameTraceChannel1;
 
 //UENUM(BlueprintType)
 //enum class EGASAbilityInputID : unit32
