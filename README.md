@@ -6,7 +6,7 @@
 
 For this week, We took a break from asset creation and issues and started to add new features to our game.
 
-As we want the players to be able to communicate in game, we implimented VOIP. We plan to add in a chat box next week.
+As we want the players to be able to communicate in game, we implimented VOIP. To show when the players mic is live, we added an icone to be displayed at the top left corner of the screen. We plan to add in a chat box next week.
 
 (_VOIPIcon_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/VOIP.PNG)
@@ -32,6 +32,8 @@ We are still currently working on assets to bring into our game.
 
 As we want it to be possible for the player to create their own abilities in game, We also created the UI for the player spell book as well as started working on centeralizing the gameplay ability system to make this possible. ( Spell book is currently disabled due to issues )
 
+(_MockSpellBookUMG_)
+![image](UE_MultiplayerTemplate/GHPages_Images/SpellBookUMG.png)
 
 
 ### Week Nine
