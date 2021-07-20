@@ -2,6 +2,38 @@
 
 ## Progress
 
+### Week Eleven
+
+For this week, We took a break from asset creation and issues and started to add new features to our game.
+
+As we want the players to be able to communicate in game, we implimented VOIP. We plan to add in a chat box next week.
+
+(_VOIPIcon_)
+![image](UE_MultiplayerTemplate/GHPages_Images/VOIP.PNG)
+
+We created a basic inventory system using C++ which will hold items the players pickup in game.
+
+(_BasicInventory_)
+![image](UE_MultiplayerTemplate/GHPages_Images/Inventory.PNG)
+
+For our first basic AI, we added in some wild life. For now we have a deer which will walk randomly until it gets tired. In order for the deer to regain its energy it will lay down to rest providing it is not in danger.
+
+(_DeerWandering_)
+![image](UE_MultiplayerTemplate/GHPages_Images/AiDeer(1).png)
+
+(_DeerResting_)
+![image](UE_MultiplayerTemplate/GHPages_Images/AiDeer(2).png)
+
+### Week Ten
+
+For this week, We spent most of our time fixing issues and asset creation.
+
+We are still currently working on assets to bring into our game.
+
+As we want it to be possible for the player to create their own abilities in game, We also created the UI for the player spell book as well as started working on centeralizing the gameplay ability system to make this possible. ( Spell book is currently disabled due to issues )
+
+
+
 ### Week Nine
 This week we added 2 new attributes for the player, OverAllDamageToDeal and OverallDamageToTake, which would allow us to calculate up any effects and add them to a single output with the recieving target only having one input. 
 
