@@ -113,7 +113,7 @@ void AUE_MultiplayerTempCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	CheckForInteractables();
+	//CheckForInteractables();
 }
 
 void AUE_MultiplayerTempCharacter::CheckForInteractables()
