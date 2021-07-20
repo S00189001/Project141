@@ -14,6 +14,9 @@ As we want the players to be able to communicate in game, we implimented VOIP. T
 We created a basic inventory system using C++ which will hold items the players pickup in game.
 
 (_BasicInventory_)
+![image](UE_MultiplayerTemplate/GHPages_Images/ForestPickup.PNG)
+
+(_BasicInventory2_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/Inventory.PNG)
 
 For our first basic AI, we added in some wild life. For now we have a deer which will walk randomly until it gets tired. In order for the deer to regain its energy it will lay down to rest providing it is not in danger.
