@@ -113,7 +113,7 @@ void AUE_MultiplayerTempCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//CheckForInteractables();
+	CheckForInteractables();
 }
 
 void AUE_MultiplayerTempCharacter::CheckForInteractables()
@@ -141,7 +141,7 @@ void AUE_MultiplayerTempCharacter::CheckForInteractables()
 	}
 
 	//If we did not hit anything or the item hit was not an iteractable then set CurrentInteractable to nullptr
-	controller->CurrentInteractable = nullptr;
+	//controller->CurrentInteractable = nullptr;
 }
 
 // Ability System
