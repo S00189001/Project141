@@ -9,12 +9,13 @@ For this week we worked on fixing some minor issues as well as adjusting some um
 We also decided that we would include a mini map for the player to view his surroundings as well as points of interests close by. 
 
 (_Minimap_)
+
 ![image](UE_MultiplayerTemplate/GHPages_Images/Minimap.png)
 
 To compliment the minimap, we added in a compass to the top of the screen which would help with POIs which are out of range of the minimap.
 
 (_Compass_)
-![image](UE_MultiplayerTemplate/GHPages_Images/compas.png)
+![image](UE_MultiplayerTemplate/GHPages_Images/Compas.png)
 
 To have a smoother transition between menus and hosted game levels, we add in async loading screens.
 
