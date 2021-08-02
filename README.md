@@ -15,6 +15,7 @@ We also decided that we would include a mini map for the player to view his surr
 To compliment the minimap, we added in a compass to the top of the screen which would help with POIs which are out of range of the minimap.
 
 (_Compass_)
+
 ![image](UE_MultiplayerTemplate/GHPages_Images/Compas.png)
 
 To have a smoother transition between menus and hosted game levels, we add in async loading screens.
