@@ -2,23 +2,23 @@
 
 ## Progress
 
-### Thirteen
+### Week Thirteen
 
 For this week we worked on fixing some minor issues as well as adjusting some umg elements.
 
 We also decided that we would include a mini map for the player to view his surroundings as well as points of interests close by. 
 
-(_VOIPIcon_)
+(_Minimap_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/Minimap.png)
 
 To compliment the minimap, we added in a compass to the top of the screen which would help with POIs which are out of range of the minimap.
 
-(_VOIPIcon_)
+(_Compass_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/compas.png)
 
 To have a smoother transition between menus and hosted game levels, we add in async loading screens.
 
-(_VOIPIcon_)
+(_LoadingScreens_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/LoadingScreen.png)
 
 ### Week Twelve
@@ -34,7 +34,7 @@ For this week, We decided to change how we wanted our game to look. Instead of g
 
 While changing out the graphics we, configured a new map which is much smaller than the one we where using previously to help with preformance.
 
-(_VOIPIcon_)
+(_NewMapGeneration_)
 ![image](UE_MultiplayerTemplate/GHPages_Images/NewMapGeneration.png)
 
 ### Week Eleven
