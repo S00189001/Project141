@@ -32,6 +32,26 @@ public:
 	//// Update properties for MP
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	//// Thirst Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_Thirst)
+		FGameplayAttributeData Thirst;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, Thirst);
+
+	UFUNCTION()
+		virtual void OnRep_Thirst(const FGameplayAttributeData& OldThirst);
+
+	//// Hunger Attribute
+	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_Hunger)
+		FGameplayAttributeData Hunger;
+
+	// Macro for getters / setters
+	ATTRIBUTE_ACCESSORS(UGASAttributeSet, Hunger);
+
+	UFUNCTION()
+		virtual void OnRep_Hunger(const FGameplayAttributeData& OldHunger);
+
 	//// Health Attribute
 	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_Health)		
 		FGameplayAttributeData Health;	

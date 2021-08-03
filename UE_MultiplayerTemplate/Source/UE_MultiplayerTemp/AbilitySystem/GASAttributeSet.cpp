@@ -22,6 +22,8 @@ void UGASAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Stamina, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Mana, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Oxygen, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Hunger, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, Thirst, COND_None, REPNOTIFY_Always);
 
 	//DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, AttackPower, COND_None, REPNOTIFY_Always);
 
@@ -37,6 +39,18 @@ void UGASAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 	// Player Resistances
 	DOREPLIFETIME_CONDITION_NOTIFY(UGASAttributeSet, FireResistance, COND_None, REPNOTIFY_Always);
 
+}
+
+void UGASAttributeSet::OnRep_Thirst(const FGameplayAttributeData& OldThirst)
+{
+	const auto PreviousValue = OldThirst.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, Thirst, PreviousValue);
+}
+
+void UGASAttributeSet::OnRep_Hunger(const FGameplayAttributeData& OldHunger)
+{
+	const auto PreviousValue = OldHunger.GetCurrentValue();
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UGASAttributeSet, Hunger, PreviousValue);
 }
 
 void UGASAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth)
