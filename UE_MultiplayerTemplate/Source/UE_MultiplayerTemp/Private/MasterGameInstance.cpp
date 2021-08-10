@@ -174,8 +174,10 @@ void UMasterGameInstance::OnCreateSessionComplete(FName SessionName, bool Succes
 	if (!ensure(World != nullptr)) return;
 
 	//World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
-	World->ServerTravel("/Game/Voxel/Maps/TestVoxelMap?listen");
+	//World->ServerTravel("/Game/Voxel/Maps/TestVoxelMap?listen");
+	World->ServerTravel("/Game/MenuSystem/Lobby?listen");
 	
+
 }
 
 void UMasterGameInstance::RefreshingServerList()

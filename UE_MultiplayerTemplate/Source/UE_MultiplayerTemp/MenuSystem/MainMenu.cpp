@@ -78,8 +78,10 @@ void UMainMenu::HostServer()
 	{
 		FString ServerName = ServerHostName->Text.ToString();
 		P_MenuInterface->Host(ServerName);
+		// test
+	if (!ensure(LobbyMenu != nullptr)) return;
+		MenuSwitcher->SetActiveWidget(LobbyMenu);
 	}
-
 }
 
 void UMainMenu::SetServerList(TArray<FServerData> ServerNames)
