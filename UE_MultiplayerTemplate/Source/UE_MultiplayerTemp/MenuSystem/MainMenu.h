@@ -77,6 +77,9 @@ private:
 		class UWidget* HostMenu;
 
 	UPROPERTY(meta = (BindWidget))
+		class UWidget* LobbyMenu;
+
+	UPROPERTY(meta = (BindWidget))
 		class UEditableTextBox* ServerHostName;
 
 	UPROPERTY(meta = (BindWidget))
