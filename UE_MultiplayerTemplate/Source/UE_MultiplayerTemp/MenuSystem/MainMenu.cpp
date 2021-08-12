@@ -54,11 +54,16 @@ bool UMainMenu::Initialize()
 	if (!ensure(CancelJoinMenuButton != nullptr)) return false;
 	// Call for binding
 	CancelJoinMenuButton->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
-	
+
 	// Binding to a button in Join Menu (JoinServer)
 	if (!ensure(ConfirmJoinMenuButton != nullptr)) return false;
 	// Call for binding
 	ConfirmJoinMenuButton->OnClicked.AddDynamic(this, &UMainMenu::JoinServer);
+
+	// Binding to a button in Join Menu (StartLobby)
+	if (!ensure(StartLobbyMenuButton != nullptr)) return false;
+	// Call for binding
+	StartLobbyMenuButton->OnClicked.AddDynamic(this, &UMainMenu::HostServer);
 
 	return true;
 }
@@ -68,6 +73,7 @@ void UMainMenu::OpenHostMenu()
 	if (!ensure(MenuSwitcher != nullptr)) return;
 	if (!ensure(HostMenu != nullptr)) return;
 	MenuSwitcher->SetActiveWidget(HostMenu);
+
 }
 
 void UMainMenu::HostServer()
@@ -78,9 +84,6 @@ void UMainMenu::HostServer()
 	{
 		FString ServerName = ServerHostName->Text.ToString();
 		P_MenuInterface->Host(ServerName);
-		// test
-	if (!ensure(LobbyMenu != nullptr)) return;
-		MenuSwitcher->SetActiveWidget(LobbyMenu);
 	}
 }
 
@@ -164,16 +167,32 @@ void UMainMenu::OpenJoinMenu()
 	{
 		P_MenuInterface->RefreshingServerList();
 	}
-
-
 }
 
 
 void UMainMenu::OpenMainMenu()
 {
-	if (!ensure(MenuSwitcher != nullptr)) return;
-	if (!ensure(JoinMenu != nullptr)) return;
-	MenuSwitcher->SetActiveWidget(MainMenu);
+	UWorld* World = this->GetWorld();
+
+	UE_LOG(LogTemp, Warning, TEXT("MapName: %s"), *World->GetMapName());
+
+	// /Game/MenuSystem/
+	if (World->GetMapName() == "UEDPIE_0_Lobby")
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Called Menu Switcher:: LobbyMenu"));
+
+		if (!ensure(MenuSwitcher != nullptr)) return;
+		if (!ensure(LobbyMenu != nullptr)) return;
+		MenuSwitcher->SetActiveWidget(LobbyMenu);
+
+		return;
+	}
+	else if (World->GetMapName() == "UEDPIE_0_MainMenu")
+	{
+		if (!ensure(MenuSwitcher != nullptr)) return;
+		if (!ensure(JoinMenu != nullptr)) return;
+		MenuSwitcher->SetActiveWidget(MainMenu);
+	}
 }
 
 void UMainMenu::ExitGame()

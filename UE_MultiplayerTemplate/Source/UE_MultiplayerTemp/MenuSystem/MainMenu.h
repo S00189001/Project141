@@ -68,6 +68,9 @@ private:
 		class UButton* ConfirmHostMenuButton;
 
 	UPROPERTY(meta = (BindWidget))
+		class UButton* StartLobbyMenuButton;
+
+	UPROPERTY(meta = (BindWidget))
 		class UWidgetSwitcher* MenuSwitcher;
 
 	UPROPERTY(meta = (BindWidget))
@@ -109,6 +112,9 @@ private:
 
 	UFUNCTION()
 		void OpenMainMenu();
+
+	/*UFUNCTION()
+		void StartGame();*/
 
 	void UpdateChildren();
 
