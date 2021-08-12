@@ -173,7 +173,11 @@ void UMasterGameInstance::OnCreateSessionComplete(FName SessionName, bool Succes
 	UWorld* World = GetWorld();
 	if (!ensure(World != nullptr)) return;
 
-	if (SessionName == "LobbySession")
+	if (World->GetMapName() == "UEDPIE_0_Lobby")
+	{
+		World->ServerTravel("/Game/Voxel/Maps/TestVoxelMap?listen");		
+	}
+	if (World->GetMapName() == "UEDPIE_0_MainMenu")
 	{
 		World->ServerTravel("/Game/MenuSystem/Lobby?listen");
 	}
@@ -181,8 +185,7 @@ void UMasterGameInstance::OnCreateSessionComplete(FName SessionName, bool Succes
 	//World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
 	//World->ServerTravel("/Game/Voxel/Maps/TestVoxelMap?listen");
 	World->ServerTravel("/Game/MenuSystem/Lobby?listen");
-
-
+	
 }
 
 void UMasterGameInstance::RefreshingServerList()
