@@ -113,7 +113,17 @@ void AUE_MultiplayerTempCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	CheckForInteractables();
+	//CheckForInteractables();
+
+	//AUE_MultiplayerTempCharacter* Player;
+	// Call for kill player
+	if (AUE_MultiplayerTempCharacter::Attributes->Health.GetCurrentValue() <= 0)
+	{
+		// Call kill
+		UE_LOG(LogTemp, Warning, TEXT("Called Player Death"));
+
+		// Call respawn		
+	}
 }
 
 void AUE_MultiplayerTempCharacter::CheckForInteractables()

@@ -61,7 +61,7 @@ public:
 
 	UFUNCTION()
 		virtual void OnRep_Health(const FGameplayAttributeData& OldHealth);
-
+	
 	//// Stamina Attribute
 	UPROPERTY(BlueprintReadWrite, Category = "Attributes", ReplicatedUsing = OnRep_Stamina)
 		FGameplayAttributeData Stamina;
