@@ -184,7 +184,9 @@ void UMasterGameInstance::OnCreateSessionComplete(FName SessionName, bool Succes
 
 	//World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
 	//World->ServerTravel("/Game/Voxel/Maps/TestVoxelMap?listen");
-	World->ServerTravel("/Game/MenuSystem/Lobby?listen");
+	//World->ServerTravel("/Game/MenuSystem/Lobby?listen");
+	World->ServerTravel("/Game/Voxel/Maps/TestVoxelMap?listen");
+	
 	
 }
 
