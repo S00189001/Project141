@@ -39,6 +39,12 @@ bool UMainMenu::Initialize()
 	if (!ensure(ConfirmHostMenuButton != nullptr)) return false;
 	// Call for binding
 	ConfirmHostMenuButton->OnClicked.AddDynamic(this, &UMainMenu::HostServer);
+	
+	// Binding to a button in Main Menu (Options)
+	if (!ensure(OptionsButton != nullptr)) return false;
+	// Call for binding
+	OptionsButton->OnClicked.AddDynamic(this, &UMainMenu::OpenOptionsMenu);
+
 
 	// Binding to a button in Main Menu (Join)
 	if (!ensure(JoinButton != nullptr)) return false;
@@ -73,6 +79,12 @@ void UMainMenu::OpenHostMenu()
 	if (!ensure(MenuSwitcher != nullptr)) return;
 	if (!ensure(HostMenu != nullptr)) return;
 	MenuSwitcher->SetActiveWidget(HostMenu);
+
+}
+
+void UMainMenu::OpenOptionsMenu()
+{
+
 
 }
 
@@ -172,27 +184,27 @@ void UMainMenu::OpenJoinMenu()
 
 void UMainMenu::OpenMainMenu()
 {
-	UWorld* World = this->GetWorld();
+	//UWorld* World = this->GetWorld();
 
-	UE_LOG(LogTemp, Warning, TEXT("MapName: %s"), *World->GetMapName());
+	//UE_LOG(LogTemp, Warning, TEXT("MapName: %s"), *World->GetMapName());
 
-	// /Game/MenuSystem/
-	if (World->GetMapName() == "UEDPIE_0_Lobby")
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Called Menu Switcher:: LobbyMenu"));
+	//// /Game/MenuSystem/
+	//if (World->GetMapName() == "UEDPIE_0_Lobby")
+	//{
+	//	UE_LOG(LogTemp, Warning, TEXT("Called Menu Switcher:: LobbyMenu"));
 
-		if (!ensure(MenuSwitcher != nullptr)) return;
-		if (!ensure(LobbyMenu != nullptr)) return;
-		MenuSwitcher->SetActiveWidget(LobbyMenu);
+	//	if (!ensure(MenuSwitcher != nullptr)) return;
+	//	if (!ensure(LobbyMenu != nullptr)) return;
+	//	MenuSwitcher->SetActiveWidget(LobbyMenu);
 
-		return;
-	}
-	else if (World->GetMapName() == "UEDPIE_0_MainMenu")
-	{
+	//	return;
+	//}
+	//else if (World->GetMapName() == "UEDPIE_0_MainMenu")
+	//{
 		if (!ensure(MenuSwitcher != nullptr)) return;
 		if (!ensure(JoinMenu != nullptr)) return;
 		MenuSwitcher->SetActiveWidget(MainMenu);
-	}
+	
 }
 
 void UMainMenu::ExitGame()
