@@ -2,6 +2,50 @@
 
 ## Progress
 
+### Week Sixteen
+
+For our final week, we spent a lot of time working on several small issues and taking out some mechanics which where broken / unfinished. Our main issue with the project was once again.. replication.
+
+We added a new player character model along with an axe and shield. The axe and shield would be attached to the player character armature using sockets. This would allow for the switching of new equipable weapons later on.
+
+LOADINGSCREEN - HERE
+
+To allow thouse without a mic to communicate, we added a basic chat system whuich was fully replicated.
+
+We made a start on the options menu but ran into several problems regarding settings, unfortunatly the options menu is disabled for now.
+
+New sounds where added to the project, main for menu interaction and gameplay background tracks.
+
+We added a new melee attack system which we finally got replicated as well as having the animations set up correctly. The top half of the players character was split which allowed us to blend animations such as attacking while moving.
+
+Along with our new melee attack, we added a block, is replicated but the blocking logic is just not quite finished.
+
+Lastly we had created new enemy NPCs which would roam until a player was within range. The NPC would strafe and then engage with the player using melee combat, this just allowed for a little more difficulty when it came to combat. (Due to an issue with the terrain generation, all NPCs will only work sometimes, Random NPCs will get stuck)
+
+### Week Fifteen
+
+For this week we created an NPC spawner which would be used for all AI. This will allow us to set the max amount of NPCs to be in certain areas as well as help with loading and spawning NPCs outside of the players vision.
+
+We added a character sheet window so that the player would be able to equipt armour and weapons while also viewing stat changes. This was made in preperation of an inventory rework.
+
+Throughtout the whole project we have been having difficulties with replication, and so though we still used the gameplay ability system, we set up a new structure for abilities which would be slotted onto the action bar. We created 3 new abilities:
+
+- Fireball: A ranged projectile which would cause fire damage.
+- Resilience: An self buff which would increase the players max hp for a shot period of time.
+- Natures Spirit: An AoE ability which would heal the player and future friendlies over time.
+
+As we would now have new 'active' effects, we added a panel which would display buffs which are active as well as the time left on them.
+
+### Week Fourteen
+
+This week we decided to adjust the map generation as a lot of terrain was just far to steep for the player to taverse, having done this we have a much better result than our previous map, though there are still some parts of the map that needs adjusting.
+
+Given that the main menus background was just just a flat image, we created a new map for the main menu and changed th background to a live animated scene which is far more pleasing to look at.
+
+Two new attribute where created for the player character, hunger and thirst. These attributes will slowly drain over time with thirst draining slightly faster. We plan to add consumables for the player to satisfy hunger and thirst.
+
+Given that we are aiming for creating an ARPG, we added the ability for ability slots on the action bar to be rebinded, allowing the activation of abilities using keybinds instead of clicking.
+
 ### Week Thirteen
 
 For this week we worked on fixing some minor issues as well as adjusting some umg elements.
