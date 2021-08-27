@@ -1,6 +1,8 @@
 ## Introduction
 
-### Can download the Manabound demo here> https://dielonfett.itch.io/manabound
+### Can download the Manabound Tech-Build here> https://dielonfett.itch.io/manabound
+### Presentation here> https://youtu.be/SxD5IrfCNac
+### Trailer here> https://youtu.be/HsPtX_bZEZo
 
 ### Trello
 
