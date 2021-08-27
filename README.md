@@ -8,7 +8,11 @@ For our final week, we spent a lot of time working on several small issues and t
 
 We added a new player character model along with an axe and shield. The axe and shield would be attached to the player character armature using sockets. This would allow for the switching of new equipable weapons later on.
 
-LOADINGSCREEN - HERE
+(_LoadingScreen_)
+
+![image](UE_MultiplayerTemplate/GHPages_Images/LoadingScreen4.PNG)
+
+Four new image where added to the async loading screen
 
 (_ChatBox_)
 
