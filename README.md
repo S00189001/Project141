@@ -1,5 +1,11 @@
 ## Introduction
 
+### Trello
+
+![image](UE_MultiplayerTemplate/GHPages_Images/Trello.PNG)
+
+We used trello for planning and primarly discord for communication.
+
 ## Progress
 
 ### Week Sixteen
