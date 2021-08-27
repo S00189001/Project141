@@ -8,9 +8,17 @@ For our final week, we spent a lot of time working on several small issues and t
 
 We added a new player character model along with an axe and shield. The axe and shield would be attached to the player character armature using sockets. This would allow for the switching of new equipable weapons later on.
 
-LOADINGSCREEN - HERE
+(_LoadingScreen_)
 
-To allow thouse without a mic to communicate, we added a basic chat system whuich was fully replicated.
+![image](UE_MultiplayerTemplate/GHPages_Images/LoadingScreen4.PNG)
+
+Four new image where added to the async loading screen
+
+(_ChatBox_)
+
+![image](UE_MultiplayerTemplate/GHPages_Images/ChatBox.PNG)
+
+To allow those without a mic to communicate, we added a basic chat system whuich is fully replicated.
 
 We made a start on the options menu but ran into several problems regarding settings, unfortunatly the options menu is disabled for now.
 
@@ -26,7 +34,15 @@ Lastly we had created new enemy NPCs which would roam until a player was within 
 
 For this week we created an NPC spawner which would be used for all AI. This will allow us to set the max amount of NPCs to be in certain areas as well as help with loading and spawning NPCs outside of the players vision.
 
+(_CharacterSheet_)
+
+![image](UE_MultiplayerTemplate/GHPages_Images/CharacterSheet.PNG)
+
 We added a character sheet window so that the player would be able to equipt armour and weapons while also viewing stat changes. This was made in preperation of an inventory rework.
+
+(_AoEHeal_)
+
+![image](UE_MultiplayerTemplate/GHPages_Images/AoEHeal.PNG)
 
 Throughtout the whole project we have been having difficulties with replication, and so though we still used the gameplay ability system, we set up a new structure for abilities which would be slotted onto the action bar. We created 3 new abilities:
 
@@ -40,9 +56,21 @@ As we would now have new 'active' effects, we added a panel which would display 
 
 This week we decided to adjust the map generation as a lot of terrain was just far to steep for the player to taverse, having done this we have a much better result than our previous map, though there are still some parts of the map that needs adjusting.
 
+(_MainMenu_)
+
+![image](UE_MultiplayerTemplate/GHPages_Images/MainMenu.PNG)
+
 Given that the main menus background was just just a flat image, we created a new map for the main menu and changed th background to a live animated scene which is far more pleasing to look at.
 
+(_HungerAndThirst_)
+
+![image](UE_MultiplayerTemplate/GHPages_Images/HungerAndThirst.PNG)
+
 Two new attribute where created for the player character, hunger and thirst. These attributes will slowly drain over time with thirst draining slightly faster. We plan to add consumables for the player to satisfy hunger and thirst.
+
+(_AbilityBar_)
+
+![image](UE_MultiplayerTemplate/GHPages_Images/AbilitiesBar.PNG)
 
 Given that we are aiming for creating an ARPG, we added the ability for ability slots on the action bar to be rebinded, allowing the activation of abilities using keybinds instead of clicking.
 
