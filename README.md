@@ -66,7 +66,7 @@ Two new attribute where created for the player character, hunger and thirst. The
 
 (_AbilityBar_)
 
-![image](UE_MultiplayerTemplate/GHPages_Images/AbilityBar.PNG)
+![image](UE_MultiplayerTemplate/GHPages_Images/AbilitiesBar.PNG)
 
 Given that we are aiming for creating an ARPG, we added the ability for ability slots on the action bar to be rebinded, allowing the activation of abilities using keybinds instead of clicking.
 
